@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}">
+    <style>
+        body {
+            background-color: #1a1a1a; /* Dark background */
+            color: white; /* White text */
+            font-family: Arial, sans-serif; /* Font style */
+            display: flex; /* Center the form */
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full height */
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #2c2c2c; /* Darker form background */
+            padding: 30px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            width: 400px; /* Set a fixed width for the form */
+            text-align: center; /* Center text */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: calc(100% - 20px); /* Full width with padding */
+            padding: 10px;
+            margin: 10px 0;
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            background-color: #444; /* Input background */
+            color: white; /* Input text color */
+            font-size: 16px; /* Font size */
+        }
+
+        input:focus {
+            outline: none; /* Remove outline */
+            background-color: #555; /* Darker input on focus */
+        }
+
+        button {
+            background-color: #28a745; /* Button color */
+            color: white; /* Button text color */
+            padding: 10px;
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            width: 100%; /* Full width */
+            font-size: 16px; /* Font size */
+            margin-top: 10px; /* Margin for button */
+        }
+
+        button:hover {
+            background-color: #218838; /* Darker button on hover */
+        }
+
+        /* Message style */
+        div {
+            margin: 10px 0; /* Margin for messages */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div>{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Render the form fields here -->
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
